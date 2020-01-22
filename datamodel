@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+  <classes>
+     <class id="PhysicalDevice" _delta="merge">
+            <fields>
+                <field id="status" xsi:type="AttributeEnum" _delta="merge">
+                    <values _delta="merge">
+                        <value id="In Used" _delta="define">In Used</value>
+                        <value id="Broken" _delta="define">Broken</value>
+						<value id="Claimed" _delta="define">Claimed</value>
+                        <value id="Disposed" _delta="define">Disposed</value>
+						<value id="Borrowed" _delta="define">Borrowed</value>
+                    </values>
+                </field>
+            </fields>
+     </class>
+	 <class id="IPPhone">
+            <fields>
+                <field id="MAC_LAN" xsi:type="AttributeString" _delta="define">
+                    <sql>MAC_LAN</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+                </field>
+				<field id="owneren" xsi:type="AttributeExternalKey" _delta="define">
+					<sql>owneren</sql>
+					<target_class>Contact</target_class>
+					<is_null_allowed>true</is_null_allowed>
+					<on_target_delete>DEL_MANUAL</on_target_delete>
+					<allow_target_creation>false</allow_target_creation>
+				</field>
+				<field id="owneren_name" xsi:type="AttributeExternalField" _delta="define">
+					<extkey_attcode>owneren</extkey_attcode>
+					<target_attcode>name</target_attcode>
+				</field>
+            </fields>
+			<presentation _delta="redefine">
+                <details>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="serialnumber">
+                      <rank>20</rank>
+                    </item>
+                    <item id="asset_number">
+                      <rank>30</rank>
+                    </item>
+                    <item id="brand_id">
+                      <rank>40</rank>
+                    </item>
+                    <item id="model_id">
+                      <rank>50</rank>
+                    </item>
+					<item id="MAC_LAN">
+                      <rank>60</rank>
+                    </item>
+                    <item id="phonenumber">
+                      <rank>70</rank>
+                    </item>
+                    <item id="status">
+                      <rank>80</rank>
+                    </item>
+                    <item id="owneren">
+                      <rank>90</rank>
+                    </item>
+                    <item id="location_id">
+                      <rank>100</rank>
+                    </item>
+                    <item id="org_id">
+                      <rank>110</rank>
+                    </item>
+                    <item id="description">
+                      <rank>120</rank>
+                    </item>
+                    <item id="move2production">
+                      <rank>130</rank>
+                    </item>
+                    <item id="purchase_date">
+                      <rank>140</rank>
+                    </item>
+                    <item id="end_of_warranty">
+                      <rank>150</rank>
+                    </item>
+					<item id="business_criticity">
+                      <rank>160</rank>
+                    </item>					
+                    <item id="contacts_list">
+                      <rank>170</rank>
+                    </item>
+                    <item id="documents_list">
+                      <rank>180</rank>
+                    </item>
+                    <item id="providercontracts_list">
+                      <rank>190</rank>
+                    </item>
+					<item id="services_list">
+                      <rank>200</rank>
+                    </item>
+                  </items>
+                </details>
+                <search>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="org_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="status">
+                      <rank>30</rank>
+                    </item>
+                    <item id="business_criticity">
+                      <rank>40</rank>
+                    </item>
+                    <item id="location_id">
+                      <rank>50</rank>
+                    </item>
+                    <item id="brand_id">
+                      <rank>60</rank>
+                    </item>
+                    <item id="model_id">
+                      <rank>70</rank>
+                    </item>
+                    <item id="phonenumber">
+                      <rank>80</rank>
+                    </item>
+                    <item id="serialnumber">
+                      <rank>90</rank>
+                    </item>
+                    <item id="asset_number">
+                      <rank>100</rank>
+                    </item>
+                    <item id="move2production">
+                      <rank>110</rank>
+                    </item>
+                    <item id="purchase_date">
+                      <rank>120</rank>
+                    </item>
+                    <item id="end_of_warranty">
+                      <rank>130</rank>
+                    </item>
+                  </items>
+                </search>
+                <list>
+                  <items>
+                    <item id="model_id">
+                      <rank>10</rank>
+                    </item>
+                    <item id="MAC_LAN">
+                      <rank>20</rank>
+                    </item>
+                    <item id="phonenumber">
+                      <rank>30</rank>
+                    </item>
+                    <item id="status">
+                      <rank>40</rank>
+                    </item>
+                    <item id="owneren_name">
+                      <rank>50</rank>
+                    </item>
+                    <item id="end_of_warranty">
+                      <rank>60</rank>
+                    </item>
+                  </items>
+                </list>
+              </presentation>
+     </class>
+	 <class id="PC">
+      <fields>
+        <field id="MAC_LAN" xsi:type="AttributeString" _delta="define">
+          <sql>MAC_LAN</sql>	
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+		<field id="MAC_WLAN" xsi:type="AttributeString" _delta="define">
+          <sql>MAC_WLAN</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+		<field id="monitor_size" xsi:type="AttributeString" _delta="define">
+          <sql>monitor_size</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+		<field id="harddisk" xsi:type="AttributeString" _delta="define">
+          <sql>harddisk</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+		<field id="vendor" xsi:type="AttributeString" _delta="define">
+          <sql>vendor</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+		<field id="ownerth" xsi:type="AttributeString" _delta="define">
+          <sql>ownerth</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+		<field id="owneren" xsi:type="AttributeExternalKey" _delta="define">
+            <sql>owneren</sql>
+            <target_class>Contact</target_class>
+            <is_null_allowed>true</is_null_allowed>
+            <on_target_delete>DEL_MANUAL</on_target_delete>
+			<allow_target_creation>false</allow_target_creation>
+		</field>
+		<field id="owneren_name" xsi:type="AttributeExternalField" _delta="define">
+            <extkey_attcode>owneren</extkey_attcode>
+            <target_attcode>name</target_attcode>
+		</field>
+      </fields>
+			<presentation>
+                <details>
+                  <items>
+                    <item id="softwares_list">
+                      <rank>5</rank>
+                    </item>
+                    <item id="contacts_list">
+                      <rank>10</rank>
+                    </item>
+                    <item id="documents_list">
+                      <rank>20</rank>
+                    </item>
+                    <item id="physicalinterface_list">
+                      <rank>40</rank>
+                    </item>
+                    <item id="networkdevice_list">
+                      <rank>50</rank>
+                    </item>
+                    <item id="providercontracts_list">
+                      <rank>60</rank>
+                    </item>
+                    <item id="services_list">
+                      <rank>70</rank>
+                    </item>
+                    <item id="col:col1">
+                      <rank>80</rank>
+                      <items>
+                        <item id="fieldset:Server:baseinfo" _delta="redefine">
+                          <rank>10</rank>
+                          <items>
+                            <item id="name">
+                              <rank>10</rank>
+                            </item>
+							<item id="serialnumber">
+                              <rank>20</rank>
+                            </item>
+                            <item id="asset_number">
+                              <rank>30</rank>
+                            </item>
+							<item id="type">
+                              <rank>40</rank>
+							</item>
+							<item id="brand_id">
+                              <rank>50</rank>
+                            </item>
+                            <item id="model_id">
+                              <rank>60</rank>
+                            </item>
+							<item id="status">
+                              <rank>70</rank>
+                            </item>
+                          </items>
+                        </item>
+                        <item id="fieldset:Server:moreinfo" _delta="redefine">
+                          <rank>20</rank>
+                          <items>
+                            <item id="cpu">
+                              <rank>10</rank>
+                            </item>
+                            <item id="ram">
+                              <rank>20</rank>
+                            </item>
+							<item id="harddisk">
+                              <rank>30</rank>
+                            </item>
+							<item id="monitor_size">
+                              <rank>40</rank>
+                            </item>
+							<item id="MAC_LAN">
+                              <rank>50</rank>
+                            </item>
+							<item id="MAC_WLAN">
+                              <rank>60</rank>
+                            </item>
+                            <item id="osfamily_id">
+                              <rank>70</rank>
+                            </item>
+                            <item id="osversion_id">
+                              <rank>80</rank>
+                            </item>
+                          </items>
+                        </item>
+                      </items>
+                    </item>
+                    <item id="col:col2">
+                      <rank>90</rank>
+                      <items>
+                        <item id="fieldset:Server:Date" _delta="redefine">
+                          <rank>10</rank>
+                          <items>                            
+                            <item id="purchase_date">
+                              <rank>20</rank>
+                            </item>
+                            <item id="end_of_warranty">
+                              <rank>30</rank>
+                            </item>
+							<item id="vendor">
+                              <rank>40</rank>
+                            </item>
+                          </items>
+                        </item>
+						<item id="fieldset:Server:ownerinfo" _delta="define">
+                          <rank>20</rank>
+                          <items>
+                            <item id="ownerth">
+                              <rank>10</rank>
+                            </item>
+							<item id="owneren">
+                              <rank>20</rank>
+                            </item>
+							<item id="org_id">
+                              <rank>30</rank>
+                            </item>
+							<item id="location_id">
+                              <rank>40</rank>
+                            </item>							
+                          </items>
+                        </item>
+                        <item id="fieldset:Server:otherinfo" _delta="redefine">
+                          <rank>30</rank>
+                          <items>
+                            <item id="description">
+                              <rank>10</rank>
+                            </item>
+							<item id="move2production">
+                              <rank>20</rank>
+                            </item>
+							<item id="business_criticity">
+                              <rank>30</rank>
+                            </item>
+                          </items>
+                        </item>
+                      </items>
+                    </item>
+                  </items>
+                </details>
+                <search>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="org_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="status">
+                      <rank>30</rank>
+                    </item>
+                    <item id="business_criticity">
+                      <rank>40</rank>
+                    </item>
+                    <item id="location_id">
+                      <rank>50</rank>
+                    </item>
+                    <item id="brand_id">
+                      <rank>60</rank>
+                    </item>
+                    <item id="model_id">
+                      <rank>70</rank>
+                    </item>
+                    <item id="type">
+                      <rank>80</rank>
+                    </item>
+                    <item id="serialnumber">
+                      <rank>90</rank>
+                    </item>
+                    <item id="asset_number">
+                      <rank>100</rank>
+                    </item>
+                    <item id="move2production">
+                      <rank>110</rank>
+                    </item>
+                    <item id="purchase_date">
+                      <rank>120</rank>
+                    </item>
+                    <item id="end_of_warranty">
+                      <rank>130</rank>
+                    </item>
+                  </items>
+                </search>
+                <list>
+                  <items _delta="redefine">
+                    <item id="brand_id">
+                      <rank>10</rank>
+                    </item>
+                    <item id="model_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="serialnumber">
+                      <rank>30</rank>
+                    </item>
+                    <item id="status">
+                      <rank>40</rank>
+                    </item>
+					<item id="vendor">
+                      <rank>50</rank>
+                    </item>					
+                    <item id="location_id">
+                      <rank>60</rank>
+                    </item>
+                    <item id="ownerth">
+                      <rank>70</rank>
+                    </item>
+                    <item id="owneren_name">
+                      <rank>80</rank>
+                    </item>
+                  </items>
+                </list>
+              </presentation>
+     </class>
+     <class id="VirtualDevice" _delta="merge">
+            <fields>
+				<field id="status" xsi:type="AttributeEnum" _delta="merge">
+                    <values _delta="merge">
+                        <value id="Test" _delta="define">Test</value>
+                        <value id="UAT" _delta="define">UAT</value>
+						<value id="Dev" _delta="define">Dev</value>						
+                    </values>
+				</field>
+            </fields>
+     </class>
+	 <class id="VirtualMachine">
+	  <fields>	 
+		<field id="admin_id" xsi:type="AttributeExternalKey" _delta="define">
+            <sql>admin_id</sql>
+            <target_class>Contact</target_class>
+            <is_null_allowed>true</is_null_allowed>
+            <on_target_delete>DEL_MANUAL</on_target_delete>
+			<allow_target_creation>false</allow_target_creation>
+		</field>
+		<field id="admin_name" xsi:type="AttributeExternalField" _delta="define">
+            <extkey_attcode>admin_id</extkey_attcode>
+            <target_attcode>name</target_attcode>
+		</field>
+		<field id="admin_id2" xsi:type="AttributeExternalKey" _delta="define">
+            <sql>admin_id2</sql>
+            <target_class>Contact</target_class>
+            <is_null_allowed>true</is_null_allowed>
+            <on_target_delete>DEL_MANUAL</on_target_delete>
+			<allow_target_creation>false</allow_target_creation>
+		</field>
+		<field id="admin_name2" xsi:type="AttributeExternalField" _delta="define">
+            <extkey_attcode>admin_id2</extkey_attcode>
+            <target_attcode>name</target_attcode>
+		</field>
+		<field id="admin_id3" xsi:type="AttributeExternalKey" _delta="define">
+            <sql>admin_id3</sql>
+            <target_class>Contact</target_class>
+            <is_null_allowed>true</is_null_allowed>
+            <on_target_delete>DEL_MANUAL</on_target_delete>
+			<allow_target_creation>false</allow_target_creation>
+		</field>
+		<field id="admin_name3" xsi:type="AttributeExternalField" _delta="define">
+            <extkey_attcode>admin_id3</extkey_attcode>
+            <target_attcode>name</target_attcode>
+		</field>
+		<field id="owner_id" xsi:type="AttributeExternalKey" _delta="define">
+            <sql>owner_id</sql>
+            <target_class>Contact</target_class>
+            <is_null_allowed>true</is_null_allowed>
+            <on_target_delete>DEL_MANUAL</on_target_delete>
+			<allow_target_creation>false</allow_target_creation>
+		</field>
+		<field id="owner_name" xsi:type="AttributeExternalField" _delta="define">
+            <extkey_attcode>owner_id</extkey_attcode>
+            <target_attcode>name</target_attcode>
+		</field>
+		<field id="webapp_id" xsi:type="AttributeExternalKey" _delta="define">
+					<sql>webapp_id</sql>
+					<target_class>WebApplication</target_class>
+					<is_null_allowed>true</is_null_allowed>
+					<on_target_delete>DEL_MANUAL</on_target_delete>
+					<allow_target_creation>false</allow_target_creation>
+		</field>
+		<field id="webapp_name" xsi:type="AttributeExternalField" _delta="define">
+					<extkey_attcode>webapp_id</extkey_attcode>
+					<target_attcode>name</target_attcode>
+		</field>
+		<field id="project" xsi:type="AttributeString" _delta="define">
+					<sql>project</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="public_ip" xsi:type="AttributeString" _delta="define">
+					<sql>public_ip</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="waf_ip" xsi:type="AttributeString" _delta="define">
+					<sql>waf_ip</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="service" xsi:type="AttributeString" _delta="define">
+					<sql>service</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk1" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk1</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>		  
+		<field id="vdisk2" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk2</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk3" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk3</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk4" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk4</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk5" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk5</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk6" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk6</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk7" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk7</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk8" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk8</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk9" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk9</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="vdisk10" xsi:type="AttributeString" _delta="define">
+					<sql>vdisk10</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="power_info" xsi:type="AttributeEnum" _delta="define">
+					<sql>power_info</sql>
+                    <values _delta="define">
+                        <value id="On" _delta="define">On</value>
+                        <value id="Off" _delta="define">Off</value>
+                    </values>
+					<default_value>On</default_value>
+					<is_null_allowed>true</is_null_allowed>
+		</field>
+		<field id="os_patch" xsi:type="AttributeString" _delta="define">
+					<sql>os_patch</sql>
+					<default_value/>
+					<is_null_allowed>true</is_null_allowed>
+					<allow_target_creation>false</allow_target_creation>
+		</field>
+		<field id="location_id" xsi:type="AttributeExternalKey" _delta="define">
+					<sql>location_id</sql>
+					<target_class>Location</target_class>
+					<is_null_allowed>true</is_null_allowed>
+					<on_target_delete>DEL_MANUAL</on_target_delete>
+					<allow_target_creation>false</allow_target_creation>
+		</field>
+        <field id="location_name" xsi:type="AttributeExternalField" _delta="define">
+                  <extkey_attcode>location_id</extkey_attcode>
+                  <target_attcode>name</target_attcode>
+        </field>
+		<field id="farm_id" xsi:type="AttributeExternalKey" _delta="define">
+                  <sql>farm_id</sql>
+                  <target_class>Farm</target_class>
+                  <is_null_allowed>true</is_null_allowed>
+                  <on_target_delete>DEL_MANUAL</on_target_delete>
+				  <allow_target_creation>false</allow_target_creation>
+        </field>
+        <field id="farm_name" xsi:type="AttributeExternalField" _delta="define">
+                  <extkey_attcode>farm_id</extkey_attcode>
+                  <target_attcode>name</target_attcode>
+        </field>
+		<field id="managementip" xsi:type="AttributeString" _delta="redefine">
+                <sql>managementip</sql>
+                <default_value/>
+                <is_null_allowed>true</is_null_allowed>
+        </field>
+		<field id="software_id" xsi:type="AttributeExternalKey" _delta="define">
+                  <sql>software_id</sql>
+                  <target_class>Software</target_class>
+                  <is_null_allowed>true</is_null_allowed>
+                  <on_target_delete>DEL_MANUAL</on_target_delete>
+				  <allow_target_creation>false</allow_target_creation>
+        </field>
+        <field id="software_name" xsi:type="AttributeExternalField" _delta="define">
+                  <extkey_attcode>software_id</extkey_attcode>
+                  <target_attcode>name</target_attcode>
+        </field>
+		<field id="software_type" xsi:type="AttributeExternalField" _delta="define">
+                  <dependencies>
+					<attribute id="software_id"/>
+				  </dependencies>
+				  <extkey_attcode>software_id</extkey_attcode>
+                  <target_attcode>type</target_attcode>
+        </field>
+		<field id="software_version" xsi:type="AttributeExternalField" _delta="define">
+                  <dependencies>
+					<attribute id="software_id"/>
+				  </dependencies>
+				  <extkey_attcode>software_id</extkey_attcode>
+                  <target_attcode>version</target_attcode>
+        </field>
+		<field id="software_vendor" xsi:type="AttributeExternalField" _delta="define">
+                  <dependencies>
+					<attribute id="software_id"/>
+				  </dependencies>
+				  <extkey_attcode>software_id</extkey_attcode>
+                  <target_attcode>vendor</target_attcode>
+        </field>
+      </fields>
+	  <presentation>
+                <details>
+				<items>
+                    <item id="col:col1">
+                      <rank>90</rank>
+                      <items>
+                        <item id="fieldset:Server:baseinfo" _delta="redefine">
+                          <rank>10</rank>
+                          <items>
+                            <item id="name">
+                              <rank>10</rank>
+                            </item>
+							<item id="webapp_id">
+                              <rank>20</rank>
+                            </item>
+                            <item id="status">
+                              <rank>30</rank>
+                            </item>
+							<item id="power_info">
+                              <rank>40</rank>
+							</item>
+							<item id="business_criticity">
+                              <rank>50</rank>
+                            </item>
+                          </items>
+                        </item>
+                        <item id="fieldset:Server:moreinfo" _delta="redefine">
+                          <rank>20</rank>
+                          <items>
+                            <item id="service">
+                              <rank>10</rank>
+                            </item>
+                            <item id="project">
+                              <rank>20</rank>
+                            </item>
+							<item id="org_id">
+                              <rank>30</rank>
+                            </item>
+							<item id="owner_id">
+                              <rank>40</rank>
+                            </item>
+							<item id="admin_id">
+                              <rank>50</rank>
+                            </item>
+							<item id="admin_id2">
+                              <rank>60</rank>
+                            </item>
+							<item id="admin_id3">
+                              <rank>70</rank>
+                            </item>
+                            <item id="move2production">
+                              <rank>80</rank>
+                            </item>
+                            <item id="description">
+                              <rank>90</rank>
+                            </item>
+                          </items>
+                        </item>
+						<item id="fieldset:Server:osinfo" _delta="define">
+                          <rank>30</rank>
+						  <items>
+                            <item id="osfamily_id">
+                              <rank>10</rank>
+                            </item>
+							<item id="osversion_id">
+                              <rank>20</rank>
+                            </item>
+							<item id="oslicence_id">
+                              <rank>30</rank>
+                            </item>
+							<item id="os_patch">
+							  <rank>40</rank>
+                            </item>
+							<item id="software_id">
+							  <rank>50</rank>
+                            </item>
+							<item id="software_type">
+							  <rank>60</rank>
+                            </item>
+							<item id="software_version">
+							  <rank>70</rank>
+                            </item>
+							<item id="software_vendor">
+							  <rank>80</rank>
+                            </item>
+						  </items>
+						</item>
+					   </items>
+                    </item>
+                    <item id="col:col2">
+                      <rank>90</rank>
+                      <items>
+                        <item id="fieldset:Server:otherinfo" _delta="redefine">
+                          <rank>10</rank>
+                          <items>
+                            <item id="managementip">
+                              <rank>10</rank>
+                            </item>
+                            <item id="public_ip">
+                              <rank>20</rank>
+                            </item>
+                            <item id="waf_ip">
+                              <rank>30</rank>
+                            </item>
+							<item id="farm_id">
+                              <rank>40</rank>
+                            </item>
+							<item id="virtualhost_id">
+                              <rank>50</rank>
+                            </item>
+							<item id="location_id">
+                              <rank>60</rank>
+                            </item>
+                          </items>
+                        </item>
+						<item id="fieldset:Server:resourceinfo" _delta="define">
+                          <rank>20</rank>
+                          <items>
+                            <item id="cpu">
+                              <rank>10</rank>
+                            </item>
+							<item id="ram">
+                              <rank>20</rank>
+                            </item>
+							<item id="vdisk1">
+                              <rank>30</rank>
+                            </item>
+							<item id="vdisk2">
+                              <rank>40</rank>
+                            </item>
+							<item id="vdisk3">
+                              <rank>50</rank>
+                            </item>
+							<item id="vdisk4">
+                              <rank>60</rank>
+                            </item>
+							<item id="vdisk5">
+                              <rank>70</rank>
+                            </item>
+							<item id="vdisk6">
+                              <rank>80</rank>
+                            </item>
+							<item id="vdisk7">
+                              <rank>90</rank>
+                            </item>
+							<item id="vdisk8">
+                              <rank>100</rank>
+                            </item>
+							<item id="vdisk9">
+                              <rank>110</rank>
+                            </item>
+							<item id="vdisk10">
+                              <rank>120</rank>
+                            </item>
+                          </items>
+                        </item>
+                      </items>
+                    </item>
+				</items>
+                </details>
+				<search>
+                <items>
+                  <item id="name">
+                    <rank>10</rank>
+                  </item>
+                  <item id="org_id">
+                    <rank>20</rank>
+                  </item>
+                  <item id="status">
+                    <rank>30</rank>
+                  </item>
+                  <item id="managementip">
+                    <rank>25</rank>
+                  </item>
+                  <item id="business_criticity">
+                    <rank>40</rank>
+                  </item>
+                  <item id="move2production">
+                    <rank>50</rank>
+                  </item>
+                </items>
+              </search>
+              <list>
+                <items _delta="redefine">
+                  <item id="project">
+                    <rank>10</rank>
+                  </item>
+                  <item id="service">
+                    <rank>20</rank>
+                  </item>
+                  <item id="status">
+                    <rank>30</rank>
+                  </item>
+				  <item id="managementip">
+                    <rank>40</rank>
+                  </item>
+				  <item id="public_ip">
+                    <rank>50</rank>
+                  </item>
+				  <item id="waf_ip">
+                    <rank>60</rank>
+                  </item>
+				  <item id="webapp_id">
+                    <rank>70</rank>
+                  </item>
+				</items>
+              </list>
+      </presentation>
+	 </class>
+  </classes>
+    <dictionaries>
+        <dictionary id="EN US">
+            <entries>
+                <entry id="Class:PhysicalDevice/Attribute:status/Value:In Used" _delta="define"><![CDATA[In Used]]></entry>
+				<entry id="Class:PhysicalDevice/Attribute:status/Value:Broken" _delta="define"><![CDATA[Broken]]></entry>
+				<entry id="Class:PhysicalDevice/Attribute:status/Value:Claimed" _delta="define"><![CDATA[Claimed]]></entry>
+				<entry id="Class:PhysicalDevice/Attribute:status/Value:Disposed" _delta="define"><![CDATA[Disposed]]></entry>
+				<entry id="Class:PhysicalDevice/Attribute:status/Value:Borrowed" _delta="define"><![CDATA[Borrowed]]></entry>
+				<entry id="Class:VirtualMachine/Attribute:status/Value:Test" _delta="define"><![CDATA[Test]]></entry>
+				<entry id="Class:VirtualMachine/Attribute:status/Value:UAT" _delta="define"><![CDATA[UAT]]></entry>
+				<entry id="Class:VirtualMachine/Attribute:status/Value:Dev" _delta="define"><![CDATA[Dev]]></entry>
+				<entry id="Class:VirtualMachine/Attribute:status/Value:production" _delta="define"><![CDATA[Production]]></entry>
+            </entries>
+        </dictionary>
+    </dictionaries>
+</itop_design>
